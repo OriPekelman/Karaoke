@@ -1,0 +1,14 @@
+
+# Karaoke: server-side caches (downloaded audio, separated stems, model weights)
+.cache/
+
+# Node
+node_modules/
+
+# Claude Code per-machine settings
+.claude/settings.local.json
+
+# Personal song library: your own scores and their manifest stay local
+# (third-party / in-copyright material is not shipped — see README).
+songs/*
+!songs/.gitkeep

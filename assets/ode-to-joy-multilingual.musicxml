@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise version="4.0">
+  <work><work-title>Ode to Joy</work-title></work>
+  <identification>
+    <creator type="composer">Beethoven (1824) · words Friedrich Schiller</creator>
+    <rights>Public domain; translations written for this demo</rights>
+    <encoding><software>karaoke/tools/musicxml-writer.mjs</software></encoding>
+  </identification>
+  <part-list>
+    <score-part id="P1"><part-name>Voice</part-name></score-part>
+  </part-list>
+  <part id="P1">
+    <measure number="1">
+      <attributes>
+        <divisions>4</divisions>
+        <key><fifths>0</fifths></key>
+        <time><beats>4</beats><beat-type>4</beat-type></time>
+        <clef><sign>G</sign><line>2</line></clef>
+      </attributes>
+      <direction placement="above"><direction-type><metronome><beat-unit>quarter</beat-unit><per-minute>104</per-minute></metronome></direction-type><sound tempo="104"/></direction>
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>begin</syllabic>
+          <text>Freu</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>Joy,</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>single</syllabic>
+          <text>Joie,</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>שמ</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>single</syllabic>
+          <text>פֿרייד,</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>end</syllabic>
+          <text>de,</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>thou</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>begin</syllabic>
+          <text>di</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>חה,</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>single</syllabic>
+          <text>דו</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>F</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>begin</syllabic>
+          <text>schö</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>spark</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>middle</syllabic>
+          <text>vi</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>ני</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>begin</syllabic>
+          <text>שיי</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>end</syllabic>
+          <text>ner</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>of</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>end</syllabic>
+          <text>ne</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>צוץ</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>end</syllabic>
+          <text>נער</text>
+        </lyric>
+      </note>
+    </measure>
+    <measure number="2">
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>begin</syllabic>
+          <text>Göt</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>light</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>begin</syllabic>
+          <text>é</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>single</syllabic>
+          <text>של</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>begin</syllabic>
+          <text>גע</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>F</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>middle</syllabic>
+          <text>ter</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>begin</syllabic>
+          <text>e</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>middle</syllabic>
+          <text>tin</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>א</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>middle</syllabic>
+          <text>טער</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>middle</syllabic>
+          <text>fun</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>middle</syllabic>
+          <text>ter</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>middle</syllabic>
+          <text>cel</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>middle</syllabic>
+          <text>לו</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>middle</syllabic>
+          <text>פֿונ</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>end</syllabic>
+          <text>ken,</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>end</syllabic>
+          <text>nal,</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>end</syllabic>
+          <text>le,</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>הים,</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>end</syllabic>
+          <text>קען,</text>
+        </lyric>
+      </note>
+    </measure>
+    <measure number="3">
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>begin</syllabic>
+          <text>Toch</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>begin</syllabic>
+          <text>Daugh</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>begin</syllabic>
+          <text>Fil</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>single</syllabic>
+          <text>בת</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>begin</syllabic>
+          <text>טאָכ</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>end</syllabic>
+          <text>ter</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>end</syllabic>
+          <text>ter</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>end</syllabic>
+          <text>le</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>א</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>end</syllabic>
+          <text>טער</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>single</syllabic>
+          <text>aus</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>of</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>single</syllabic>
+          <text>de</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>לים</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>single</syllabic>
+          <text>פֿון</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>begin</syllabic>
+          <text>E</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>begin</syllabic>
+          <text>E</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>begin</syllabic>
+          <text>l’É</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>single</syllabic>
+          <text>מן</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>begin</syllabic>
+          <text>ע</text>
+        </lyric>
+      </note>
+    </measure>
+    <measure number="4">
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <dot/>
+        <lyric number="1" name="Deutsch">
+          <syllabic>middle</syllabic>
+          <text>ly</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>middle</syllabic>
+          <text>ly</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>middle</syllabic>
+          <text>ly</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>ה</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>middle</syllabic>
+          <text>לי</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>middle</syllabic>
+          <text>si</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>middle</syllabic>
+          <text>si</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>middle</syllabic>
+          <text>si</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>middle</syllabic>
+          <text>מ</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>middle</syllabic>
+          <text>סי</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>8</duration>
+        <voice>1</voice>
+        <type>half</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>end</syllabic>
+          <text>um,</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>end</syllabic>
+          <text>um,</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>end</syllabic>
+          <text>um,</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>רום,</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>end</syllabic>
+          <text>ום,</text>
+        </lyric>
+      </note>
+    </measure>
+    <measure number="5">
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>single</syllabic>
+          <text>Wir</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>begin</syllabic>
+          <text>Fi</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>single</syllabic>
+          <text>Nous</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>בו</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>begin</syllabic>
+          <text>פֿײַ</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>begin</syllabic>
+          <text>be</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>middle</syllabic>
+          <text>re</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>begin</syllabic>
+          <text>en</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>middle</syllabic>
+          <text>ע</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>middle</syllabic>
+          <text>ער</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>F</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>middle</syllabic>
+          <text>tre</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>end</syllabic>
+          <text>drunk</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>end</syllabic>
+          <text>trons,</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>רים</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>middle</syllabic>
+          <text>טרונ</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>end</syllabic>
+          <text>ten</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>we</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>begin</syllabic>
+          <text>i</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>נ</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>end</syllabic>
+          <text>קען</text>
+        </lyric>
+      </note>
+    </measure>
+    <measure number="6">
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>begin</syllabic>
+          <text>feu</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>come</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>end</syllabic>
+          <text>vres</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>בוא</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>begin</syllabic>
+          <text>קו</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>F</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>middle</syllabic>
+          <text>er</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>begin</syllabic>
+          <text>be</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>single</syllabic>
+          <text>de</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>א</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>end</syllabic>
+          <text>מען</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>middle</syllabic>
+          <text>trun</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>end</syllabic>
+          <text>fore</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>begin</syllabic>
+          <text>flam</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>middle</syllabic>
+          <text>ל</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>single</syllabic>
+          <text>מיר</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>end</syllabic>
+          <text>ken,</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>thee,</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>end</syllabic>
+          <text>me,</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>יך,</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>single</syllabic>
+          <text>אָן,</text>
+        </lyric>
+      </note>
+    </measure>
+    <measure number="7">
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>begin</syllabic>
+          <text>Himm</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>begin</syllabic>
+          <text>Heav</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>single</syllabic>
+          <text>En</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>single</syllabic>
+          <text>אל</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>begin</syllabic>
+          <text>הימ</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>middle</syllabic>
+          <text>li</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>middle</syllabic>
+          <text>en</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>single</syllabic>
+          <text>ton</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>מק</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>middle</syllabic>
+          <text>לי</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>end</syllabic>
+          <text>sche,</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>end</syllabic>
+          <text>ly,</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>begin</syllabic>
+          <text>sanc</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>middle</syllabic>
+          <text>ד</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>end</syllabic>
+          <text>שע,</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>single</syllabic>
+          <text>dein</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>thy</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>middle</syllabic>
+          <text>tu</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>שך</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>single</syllabic>
+          <text>אין</text>
+        </lyric>
+      </note>
+    </measure>
+    <measure number="8">
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <dot/>
+        <lyric number="1" name="Deutsch">
+          <syllabic>begin</syllabic>
+          <text>Hei</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>begin</syllabic>
+          <text>ho</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>middle</syllabic>
+          <text>ai</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>begin</syllabic>
+          <text>ה</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>single</syllabic>
+          <text>דײַן</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>middle</syllabic>
+          <text>lig</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>end</syllabic>
+          <text>ly</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>end</syllabic>
+          <text>re</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>middle</syllabic>
+          <text>ק</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>begin</syllabic>
+          <text>הי</text>
+        </lyric>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>8</duration>
+        <voice>1</voice>
+        <type>half</type>
+        <lyric number="1" name="Deutsch">
+          <syllabic>end</syllabic>
+          <text>tum!</text>
+        </lyric>
+        <lyric number="2" name="English">
+          <syllabic>single</syllabic>
+          <text>home!</text>
+        </lyric>
+        <lyric number="3" name="Français">
+          <syllabic>single</syllabic>
+          <text>saint!</text>
+        </lyric>
+        <lyric number="4" name="עברית">
+          <syllabic>end</syllabic>
+          <text>דוש!</text>
+        </lyric>
+        <lyric number="5" name="ייִדיש">
+          <syllabic>end</syllabic>
+          <text>כל!</text>
+        </lyric>
+      </note>
+    </measure>
+  </part>
+</score-partwise>

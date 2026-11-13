@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Karaoke">
+  <!-- Maskable: everything that matters sits inside the middle 80%, so a round
+       or squircle mask cannot crop the dot. -->
+  <rect width="512" height="512" fill="#0A0B0E"/>
+  <g fill="none" stroke="#F3EFE6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M152 316 L204 296 L256 244 L308 270 L360 198" stroke-opacity=".22" stroke-width="8"/>
+  </g>
+  <g fill="#F3EFE6" fill-opacity=".3">
+    <circle cx="152" cy="316" r="8"/>
+    <circle cx="204" cy="296" r="8"/>
+    <circle cx="256" cy="244" r="8"/>
+    <circle cx="308" cy="270" r="8"/>
+  </g>
+  <circle cx="360" cy="198" r="50" fill="#F3EFE6" fill-opacity=".12"/>
+  <circle cx="360" cy="198" r="32" fill="#F3EFE6"/>
+</svg>

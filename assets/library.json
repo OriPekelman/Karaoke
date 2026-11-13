@@ -1,0 +1,42 @@
+{
+  "_comment": "The bundled public-domain demos. Put YOUR songs in ../songs/library.json instead — it is included below, so your setlist stays separate from the shipped one. Paths are relative to the manifest they appear in. When a backend arrives, this is the shape the API should return.",
+  "include": ["../songs/library.json"],
+  "songs": [
+    {
+      "file": "ode-to-joy-multilingual.musicxml",
+      "title": "Ode to Joy",
+      "artist": "Beethoven · Schiller",
+      "languages": ["Deutsch", "English", "Français", "עברית", "ייִדיש"]
+    },
+    {
+      "file": "au-clair-de-la-lune.musicxml",
+      "title": "Au clair de la lune",
+      "artist": "traditionnel",
+      "languages": ["Français"]
+    },
+    {
+      "file": "amazing-grace.musicxml",
+      "title": "Amazing Grace",
+      "artist": "trad. · John Newton",
+      "languages": ["English"]
+    },
+    {
+      "file": "greensleeves.musicxml",
+      "title": "Greensleeves",
+      "artist": "traditional",
+      "languages": ["English"]
+    },
+    {
+      "file": "frere-jacques-round.musicxml",
+      "title": "Frère Jacques",
+      "artist": "traditionnel · round for three voices",
+      "languages": ["Français", "English", "Deutsch"]
+    },
+    {
+      "file": "solfege-ladder.musicxml",
+      "title": "Chromatic Solfège Ladder",
+      "artist": "warm-up",
+      "languages": ["Solfège"]
+    }
+  ]
+}

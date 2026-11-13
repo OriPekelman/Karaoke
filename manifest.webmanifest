@@ -1,0 +1,15 @@
+{
+  "name": "Karaoke",
+  "short_name": "Karaoke",
+  "description": "A karaoke player that shows a dot instead of a staff.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0A0B0E",
+  "theme_color": "#0A0B0E",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,623 @@
+/* Karaoke — type and a dot. Nothing else. */
+
+:root {
+  --bg:        #0A0B0E;
+  --bg-lift:   #12141A;
+  --ink:       #F3EFE6;
+  --ink-soft:  rgba(243, 239, 230, .42);
+  --ink-dim:   rgba(243, 239, 230, .22);
+  --ink-faint: rgba(243, 239, 230, .09);
+  --rule:      rgba(243, 239, 230, .07);
+  /* One colour for a note that sits outside the key, either way. Which way is
+     something the notation already tells you; that it is chromatic at all is
+     what you need to see coming while singing. */
+  --alt:       #E4574C;
+  --sharp:     var(--alt);
+  --flat:      var(--alt);
+  --glow:      .55;
+  --vignette:  rgba(0, 0, 0, .5);
+  --veil:      82%;
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Hoefler Text", Georgia, ui-serif, serif;
+  --sans:  ui-sans-serif, -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono:  ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+
+[data-theme="paper"] {
+  --bg:        #FAF7F0;
+  --bg-lift:   #FFFDF8;
+  --ink:       #14161B;
+  --ink-soft:  rgba(20, 22, 27, .48);
+  --ink-dim:   rgba(20, 22, 27, .26);
+  --ink-faint: rgba(20, 22, 27, .10);
+  --rule:      rgba(20, 22, 27, .09);
+  --alt:       #C4382A;
+  --sharp:     var(--alt);
+  --flat:      var(--alt);
+  --glow:      .30;
+  --vignette:  rgba(120, 108, 86, .07);
+  --veil:      88%;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background .5s ease, color .5s ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 70% at 50% 22%, color-mix(in oklab, var(--bg-lift) 90%, transparent) 0%, transparent 70%),
+    linear-gradient(180deg, transparent 55%, var(--vignette) 100%);
+  z-index: 0;
+}
+
+/* ── micro-typography for all the chrome ───────────────────────────── */
+
+.label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: none;
+  border: 0;
+  white-space: nowrap;
+}
+.label.dim  { color: var(--ink-dim); }
+.label.mono { font-family: var(--mono); letter-spacing: .06em; }
+
+button.label, select.label {
+  cursor: pointer;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: color .2s, border-color .2s, background .2s;
+}
+button.label:hover, select.label:hover { color: var(--ink); border-color: var(--rule); }
+button.label:disabled { opacity: .3; cursor: default; border-color: transparent; color: var(--ink-soft); }
+button.label[aria-pressed="true"] { color: var(--ink); border-color: var(--rule); background: var(--ink-faint); }
+select.label { -webkit-appearance: none; appearance: none; max-width: 22ch; text-overflow: ellipsis; }
+
+.stepper { display: inline-flex; align-items: center; }
+.stepper .tick {
+  padding: 5px 6px;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+#btn-speed { min-width: 5.2ch; text-align: center; font-family: var(--mono); letter-spacing: .02em; }
+select.label option { background: var(--bg-lift); color: var(--ink); letter-spacing: 0; text-transform: none; }
+
+kbd {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0;
+  padding: 1px 4px;
+  margin: 0 1px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  color: inherit;
+}
+
+/* ── chrome bars: present, but they get out of the way ─────────────── */
+
+.chrome {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 22px;
+  opacity: 1;
+  transition: opacity .6s ease;
+}
+body.immersed .chrome { opacity: 0; }
+body.immersed .chrome:hover { opacity: 1; }
+
+.top .meta { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.top .meta .label { overflow: hidden; text-overflow: ellipsis; }
+.tools { display: flex; align-items: center; gap: 4px; }
+
+.bottom { align-items: flex-end; }
+.legend { display: flex; gap: 16px; }
+.legend .label { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.sw.natural { background: var(--ink); }
+.sw.alt     { background: var(--alt); }
+.transport { display: flex; gap: 14px; align-items: baseline; }
+.keys { text-align: right; }
+@media (max-width: 780px) { .keys, .legend { display: none; } }
+
+/* ── the stage ─────────────────────────────────────────────────────── */
+
+#stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: end;
+  padding: 0 6vw 4vh;
+  min-height: 0;
+}
+
+#pitch {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* reserves the vertical space the pitch contour is drawn into */
+#band { align-self: stretch; min-height: 12vh; }
+
+#lines {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-bottom: 2vh;
+
+  /* Every language is the same size. The more of them, the smaller they all get
+     — nobody gets demoted to a footnote. */
+  --lyric: clamp(1.05rem, 2.2vw, 1.5rem);
+  --lyric-gap: clamp(5px, .9vh, 11px);
+}
+#lines[data-tracks="1"] { --lyric: clamp(2rem, 5.4vw, 4rem); }
+#lines[data-tracks="2"] { --lyric: clamp(1.7rem, 4.2vw, 3.1rem); --lyric-gap: clamp(10px, 1.8vh, 22px); }
+#lines[data-tracks="3"] { --lyric: clamp(1.45rem, 3.4vw, 2.5rem);  --lyric-gap: clamp(8px, 1.4vh, 18px); }
+#lines[data-tracks="4"] { --lyric: clamp(1.3rem, 2.9vw, 2.05rem); --lyric-gap: clamp(7px, 1.2vh, 15px); }
+#lines[data-tracks="5"] { --lyric: clamp(1.15rem, 2.5vw, 1.75rem); }
+
+/* Block, not flex: an auto inline-margin on a flex item shrink-wraps it, and
+   the rows must share one width so the language tags line up in a column. */
+#stack { display: block; }
+.lyric + .lyric { margin-top: var(--lyric-gap); }
+
+.lyric {
+  position: relative;
+  max-width: min(100%, 1040px);
+  margin-inline: auto;
+  /* Room for the language tag, kept symmetrical so the words stay centred. */
+  padding-inline: clamp(3.2rem, 7vw, 6rem);
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--lyric);
+  line-height: 1.28;
+  letter-spacing: -.004em;
+  min-height: 1.28em;
+  transition: opacity .34s ease;
+}
+.lyric .tag {
+  /* Always the physical left, even for right-to-left rows: one column of
+     labels is what someone scanning for their language actually reads. */
+  position: absolute;
+  left: 0;
+  top: .42em;
+  direction: ltr;
+  text-align: left;
+  max-width: 5.5rem;
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lyric.lead .tag { color: var(--ink-dim); }
+/* A name is read, a language label is only glanced at, so names carry further —
+   and get the room to be read whole, since "Troisième vo…" names nobody. */
+#lines[data-rows="voices"] .lyric .tag { color: var(--ink-dim); max-width: clamp(4.5rem, 9vw, 8rem); }
+#lines[data-rows="voices"] .lyric.lead .tag { color: var(--ink-soft); }
+#lines[data-rows="voices"] .lyric { padding-inline: clamp(5rem, 10vw, 8.5rem); }
+.lyric .text { text-wrap: balance; }
+
+#lines[data-tracks="1"] .lyric { padding-inline: 0; }
+
+.line.next {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: max(.72em, calc(var(--lyric) * .62));
+  line-height: 1.3;
+  color: var(--ink-dim);
+  margin-top: clamp(12px, 2.6vh, 30px);
+  min-height: 1.3em;
+  transition: opacity .34s ease;
+}
+/* A voice that is not singing just now falls back — still readable, so you can
+   see your entry coming, but it stops competing with whoever has the line. Only
+   the words recede: the name stays, because it is what tells you the quiet row
+   is a person waiting rather than a line that has ended. The lead row fades
+   less, because the dot is sitting on it. */
+.lyric.resting .text { opacity: .34; }
+.lyric.lead.resting .text { opacity: .6; }
+.lyric .text { transition: opacity .34s ease; }
+
+/* Rows change line on their own clock, so each fades on its own; the next-line
+   preview belongs to the lead row and fades with it. */
+.lyric.swapping { opacity: 0; }
+#lines.swapping .line.next { opacity: 0; }
+
+@media (max-width: 700px) {
+  .lyric { grid-template-columns: 0 minmax(0, 1fr) 0; }
+  /* Language labels can go — the words say which language they are. Names of
+     singers cannot: on a duet, the label is the whole point of the row. */
+  #lines[data-rows="languages"] .lyric .tag { display: none; }
+  #lines[data-rows="languages"] .lyric { padding-inline: 0; }
+  #lines[data-rows="voices"] .lyric { padding-inline: 3.4rem 0; }
+  #lines[data-rows="voices"] .lyric .tag { max-width: 3rem; }
+}
+
+.word { white-space: nowrap; }
+
+/* Chord symbols ride above the syllable they change on — lead-sheet placement,
+   because a chord in the margin is a chord you cannot use. They take no space in
+   the line, so adding them never re-wraps the words. */
+.syl { position: relative; }
+.chord {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  transform: translateY(.15em);
+  font-family: var(--sans);
+  font-size: max(10px, .34em);
+  font-weight: 500;
+  letter-spacing: .06em;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ink-soft);
+  opacity: 1;
+  pointer-events: none;
+}
+.lyric:not(.lead) .chord { display: none; }
+[dir="rtl"] .chord { left: auto; right: 0; }
+
+.syl {
+  color: var(--ink);
+  opacity: .30;
+  transition: opacity .18s ease, color .3s ease;
+}
+.syl.past   { opacity: .13; }
+.syl.active { opacity: 1; }
+.syl.alt-sharp.active, .syl.alt-sharp.ahead { color: var(--sharp); }
+.syl.alt-flat.active,  .syl.alt-flat.ahead  { color: var(--flat); }
+.line.next .syl { opacity: .85; }
+
+.hy { opacity: .3; padding: 0 .04em; }
+
+/* ── splash / idle ─────────────────────────────────────────────────── */
+
+#splash {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 0 8vw;
+  background: color-mix(in oklab, var(--bg) var(--veil), transparent);
+  backdrop-filter: blur(3px);
+  transition: opacity .5s ease, visibility .5s;
+}
+#splash[hidden-soft] { opacity: 0; visibility: hidden; }
+#splash h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  font-weight: 400;
+  letter-spacing: -.015em;
+}
+#splash p { font-family: var(--serif); font-size: clamp(.95rem, 1.6vw, 1.2rem); color: var(--ink-soft); font-style: italic; }
+#splash .hint {
+  margin-top: 22px;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+#splash .hint em { font-style: normal; color: var(--ink-soft); }
+
+#error {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--sharp);
+  border: 1px solid color-mix(in oklab, var(--sharp) 35%, transparent);
+  border-radius: 999px;
+  padding: 8px 16px;
+  max-width: 80vw;
+  text-align: center;
+}
+
+/* ── scrub hairline ────────────────────────────────────────────────── */
+
+#scrub {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 14px;
+  z-index: 6;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+}
+#scrub::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--ink-faint);
+}
+#scrub-fill {
+  position: relative;
+  height: 1px;
+  width: 0;
+  background: var(--ink-soft);
+  transition: height .2s ease;
+}
+#scrub:hover #scrub-fill, #scrub:hover::before { height: 3px; }
+
+/* ── drop target ───────────────────────────────────────────────────── */
+
+/* Reading a score is the one wait in this app. A hairline crossing the top says
+   so — deliberately a line travelling, not a ring turning: nothing here should
+   look like the machine thinking about whether to let you sing. */
+#loading {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 1px;
+  z-index: 40;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity .2s ease .1s;
+  pointer-events: none;
+}
+#loading i {
+  display: block;
+  width: 34%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--ink-soft), transparent);
+  transform: translateX(-100%);
+}
+body.loading #loading { opacity: 1; }
+body.loading #loading i { animation: sweep 1.15s cubic-bezier(.4, 0, .2, 1) infinite; }
+
+/* The splash says which score is being read, in place of the usual invitation —
+   the title appears the moment you choose it, so the screen answers at once even
+   when the file does not. */
+#splash-loading { display: none; }
+body.loading #splash-loading { display: block; }
+body.loading #splash-hint { display: none; }
+#splash-loading .ell::after {
+  content: '…';
+  animation: ell 1.4s steps(4, end) infinite;
+  clip-path: inset(0 0 0 0);
+}
+@keyframes ell {
+  0%   { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes sweep {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(400%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.loading #loading i { animation: none; transform: none; width: 100%; opacity: .5; }
+}
+
+/* The setlist: a panel you prepare a session in — find a song, add it, put the
+   songs in the order you mean to sing them. It sits over the stage rather than
+   pushing it, so opening it never re-lays out the words or the canvas. */
+#sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 30;
+  width: min(380px, 88vw);
+  display: flex;
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-inline-end: 1px solid var(--rule);
+  box-shadow: 0 0 60px rgba(0, 0, 0, .5);
+  animation: slide-in .22s cubic-bezier(.2, .7, .3, 1);
+}
+#sidebar[hidden] { display: none; }
+@keyframes slide-in { from { transform: translateX(-100%); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { #sidebar { animation: none; } }
+
+#sidebar .sheet {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  padding: clamp(14px, 2.4vh, 22px);
+  padding-top: max(clamp(14px, 2.4vh, 22px), env(safe-area-inset-top));
+}
+
+.side-head { display: flex; align-items: baseline; gap: .6em; }
+.side-head #side-close { margin-inline-start: auto; }
+.side-title { margin: .8em 0 0; }
+.side-foot { display: flex; align-items: baseline; gap: .8em; margin-top: auto; padding-top: .8em; }
+.side-foot #side-note { margin-inline-start: auto; }
+
+#find-input {
+  width: 100%;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: .3em 0 .45em;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+}
+#find-input::placeholder { color: var(--ink-dim); }
+#find-input:focus { outline: none; border-bottom-color: var(--ink-dim); }
+#find-input::-webkit-search-cancel-button { display: none; }
+
+/* The kinds of song in the results, offered only when there is a choice. */
+.chips { display: flex; flex-wrap: wrap; gap: .3em; margin: .1em 0 .45em; }
+.chips[hidden] { display: none; }
+.chips .chip { padding: 3px 8px; border: 1px solid var(--rule); border-radius: 999px; }
+.chips .chip[aria-pressed="true"] { color: var(--ink); border-color: currentColor; }
+
+.soundtrack { margin-top: .35em; }
+.soundtrack[hidden] { display: none; }
+.soundtrack-head { display: flex; align-items: baseline; gap: .3em; margin-bottom: .3em; }
+/* The two ways of asking sit together at the end: one press, or a shortlist. */
+.soundtrack-head #youtube-auto { margin-inline-start: auto; }
+.soundtrack-head #youtube-auto[hidden] { display: none; }
+.soundtrack-head #youtube-auto[hidden] + #youtube-find { margin-inline-start: auto; }
+#youtube-auto { color: var(--ink); border-color: var(--rule); }
+.soundtrack-head #separate-btn { margin-inline-start: auto; }
+.soundtrack > div { display: flex; gap: .55em; align-items: baseline; }
+#youtube-url {
+  min-width: 0;
+  flex: 1;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: .28em 0 .38em;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1rem;
+}
+#youtube-url::placeholder { color: var(--ink-dim); }
+#youtube-url:focus { outline: none; border-bottom-color: var(--ink-dim); }
+#youtube-note { margin: .3em 0 0; }
+#youtube-results { list-style: none; margin: .35em 0 0; padding: 0; }
+#youtube-results:empty { display: none; }
+#youtube-results li {
+  display: flex;
+  align-items: baseline;
+  gap: .5em;
+  padding: .3em .4em;
+  margin-inline: -.4em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: .95rem;
+}
+#youtube-results li:hover { background: var(--ink-faint); }
+#youtube-results .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#youtube-results .who { margin-inline-start: auto; color: var(--ink-dim); font-family: var(--sans); font-size: 9.5px; letter-spacing: .1em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 42%; }
+
+#find-note { margin: 0; }
+
+/* Results and playlist share a shape: a name, who wrote it, and one action. */
+#find-results, #playlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+}
+#find-results { max-height: 34vh; }
+#find-results:empty { display: none; }
+#playlist { flex: 1; }
+
+#find-results li, #playlist li {
+  display: flex;
+  align-items: baseline;
+  gap: .5em;
+  padding: .42em .5em;
+  margin-inline: -.5em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: clamp(.95rem, 1.7vw, 1.08rem);
+  color: var(--ink);
+  border: 1px solid transparent;
+}
+#find-results li[aria-selected="true"], #playlist li:hover { background: var(--ink-faint); }
+#find-results li .who, #playlist li .who {
+  font-family: var(--sans);
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-inline-start: auto;
+  padding-inline-start: .8em;
+  max-width: 44%;
+}
+#find-results li .set { color: var(--ink-soft); font-size: .82em; }
+#find-results li .add, #playlist li .drop {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1;
+  color: var(--ink-dim);
+  background: none;
+  border: 0;
+  padding: .2em .3em;
+  cursor: pointer;
+}
+#find-results li .add:hover, #playlist li .drop:hover { color: var(--ink); }
+
+#playlist li .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#playlist li .grip {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-faint);
+  cursor: grab;
+  user-select: none;
+}
+#playlist li.current { background: var(--ink-faint); }
+#playlist li.current .name { font-style: italic; }
+#playlist li.dragging { opacity: .4; }
+#playlist li.over { border-top-color: var(--ink-soft); }
+#playlist li .kept { color: var(--ink-soft); font-size: .8em; }
+
+#dropzone {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in oklab, var(--bg) 82%, transparent);
+  border: 1px dashed var(--ink-dim);
+}
+#dropzone span {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+body.dragging #dropzone { display: flex; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .01ms !important; }
+}

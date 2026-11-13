@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karaoke</title>
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0A0B0E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="chrome top" id="top">
+  <div class="meta">
+    <span class="label" id="song-title">—</span>
+    <span class="label dim" id="song-composer"></span>
+  </div>
+  <div class="tools">
+    <select id="demo-picker" class="label" aria-label="Song"></select>
+    <span class="stepper" role="group" aria-label="Speed">
+      <button class="label tick" id="btn-slower" title="Slower ([)" aria-label="Slower">–</button>
+      <button class="label" id="btn-speed" title="Reset to normal speed">100%</button>
+      <button class="label tick" id="btn-faster" title="Faster (])" aria-label="Faster">+</button>
+    </span>
+    <button class="label" id="btn-voice" title="Which part is mine (V)" hidden>—</button>
+    <button class="label" id="btn-all" title="Draw every part (A)" aria-pressed="true" hidden>All</button>
+    <button class="label" id="btn-lang" title="Sung language (L)" hidden>—</button>
+    <button class="label" id="btn-find" title="The setlist: find, open, reorder (S)">Setlist</button>
+    <button class="label" id="btn-guide" title="The tone that sings the notes with you (G)" aria-pressed="true">Tone on</button>
+    <button class="label" id="btn-accomp" title="The other instruments (B)" aria-pressed="true" hidden>Piano on</button>
+    <button class="label" id="btn-theme" title="Theme (T)">Theme</button>
+  </div>
+</header>
+
+<main id="stage">
+  <canvas id="pitch" aria-hidden="true"></canvas>
+  <div id="band" aria-hidden="true"></div>
+  <div id="lines">
+    <div id="stack"></div>
+    <div class="line next" id="line-next"></div>
+  </div>
+  <div id="splash">
+    <h1 id="splash-title">Karaoke</h1>
+    <p id="splash-composer"></p>
+    <p class="hint" id="splash-hint">press <kbd>space</kbd> to sing · drop a <em>.musicxml</em>, <em>.mxl</em>, <em>.mscz</em> or <em>.kar</em> file anywhere</p>
+    <p class="hint" id="splash-loading">reading the score<i class="ell"></i></p>
+  </div>
+  <p id="error" hidden></p>
+</main>
+
+<footer class="chrome bottom" id="bottom">
+  <div class="legend">
+    <span class="label"><i class="sw natural"></i>in key</span>
+    <span class="label"><i class="sw alt"></i>a semitone out&nbsp;♯♭</span>
+  </div>
+  <div class="transport">
+    <span class="label mono" id="clock">0:00</span>
+    <span class="label dim" id="status">ready</span>
+    <span class="label dim" id="tweaks"></span>
+  </div>
+  <div class="keys label dim">
+    <kbd>space</kbd> play <kbd>←</kbd><kbd>→</kbd> seek <kbd>↑</kbd><kbd>↓</kbd> key <kbd>[</kbd><kbd>]</kbd> tempo <kbd>L</kbd> language <kbd>V</kbd> part <kbd>A</kbd> all parts <kbd>B</kbd> instruments <kbd>C</kbd> chords <kbd>S</kbd> setlist <kbd>N</kbd> next song <kbd>R</kbd> restart
+  </div>
+</footer>
+
+<div id="loading" aria-hidden="true"><i></i></div>
+
+<aside id="sidebar" hidden aria-label="Setlist">
+  <div class="sheet">
+    <div class="side-head">
+      <span class="label">Setlist</span>
+      <span class="label dim" id="side-count"></span>
+      <button class="label" id="side-close" title="Close (S)" aria-label="Close">Close</button>
+    </div>
+
+    <input id="find-input" type="search" placeholder="find a song — composer, title, cycle…" autocomplete="off"
+           spellcheck="false" aria-label="Find a song" aria-controls="find-results">
+    <p class="label dim" id="find-note"><span id="find-state">type to search</span></p>
+    <div id="find-styles" class="chips" role="group" aria-label="Kind of song" hidden></div>
+    <ul id="find-results" role="listbox"></ul>
+
+    <form id="youtube-form" class="soundtrack" hidden>
+      <div class="soundtrack-head">
+        <label class="label" for="youtube-url">YouTube soundtrack</label>
+        <button class="label" id="youtube-auto" type="button" title="Find the best match and load it">Auto</button>
+        <button class="label" id="youtube-find" type="button">Find tracks</button>
+      </div>
+      <div>
+        <input id="youtube-url" type="url" inputmode="url" placeholder="paste a YouTube link" autocomplete="url"
+               spellcheck="false" aria-describedby="youtube-note">
+        <button class="label" id="youtube-load" type="submit">Load</button>
+      </div>
+      <p class="label dim" id="youtube-note">matches the recording to the score</p>
+      <ul id="youtube-results" role="listbox" aria-label="Suggested YouTube soundtracks"></ul>
+    </form>
+
+    <div id="separate-box" class="soundtrack" hidden>
+      <div class="soundtrack-head">
+        <span class="label">Recording</span>
+        <button class="label" id="separate-btn" type="button" title="Separate the vocals out of the loaded recording">Remove vocals</button>
+      </div>
+      <p class="label dim" id="separate-note">takes the singer out, keeps the band</p>
+    </div>
+
+    <p class="label dim side-title" id="playlist-title">Tonight</p>
+    <ol id="playlist" aria-label="Songs in order"></ol>
+
+    <div class="side-foot">
+      <button class="label" id="btn-open" title="Open a MusicXML / MuseScore file (O)">Open files…</button>
+      <span class="label dim" id="side-note">drag to reorder</span>
+    </div>
+  </div>
+</aside>
+
+<div id="scrub" role="slider" aria-label="Seek"><i id="scrub-fill"></i></div>
+<div id="dropzone"><span>release to load</span></div>
+<input type="file" id="file-input" accept=".musicxml,.xml,.mxl,.mscz,.mscx,.kar,.mid,.midi,audio/*" multiple hidden>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
